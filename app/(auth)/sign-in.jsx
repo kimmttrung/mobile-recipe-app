@@ -53,11 +53,11 @@ const SignInScreen = () => {
         <View style={authStyles.container}>
             <KeyboardAvoidingView
                 style={authStyles.keyboardView}
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                // behavior={Platform.OS === "android" ? "padding" : "height"} 
+                // behavior={Platform.OS === "ios" ? "padding" : "height"}
+                behavior={Platform.OS === "android" ? "padding" : "height"}
                 keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
 
-                >
+            >
 
                 <ScrollView
                     contentContainerStyle={authStyles.scrollContent}
@@ -85,7 +85,7 @@ const SignInScreen = () => {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                             />
-                            
+
                         </View>
 
                         {/* Password input  */}
@@ -102,14 +102,14 @@ const SignInScreen = () => {
                             <TouchableOpacity
                                 style={authStyles.eyeButton}
                                 onPress={() => setShowPassword(!showPassword)}
-                            > 
+                            >
                                 <Ionicons
                                     name={showPassword ? "eye-outline" : "eye-off-outline"}
                                     size={20}
                                     color={COLORS.textLight}
                                 />
                             </TouchableOpacity>
-                            
+
                         </View>
 
                         <TouchableOpacity
@@ -121,6 +121,16 @@ const SignInScreen = () => {
                             <Text
                                 style={authStyles.buttonText}
                             >{loading ? "Signing In ..." : "Sign In"}</Text>
+                        </TouchableOpacity>
+                        {/* Sign up link  */}
+                        <TouchableOpacity
+                            style={authStyles.linkContainer}
+                            onPress={() => router.push("/(auth)/sign-up")}
+                        >
+                            <Text style={authStyles.linkText}>
+                                Don t have an account? <Text style={authStyles.link}>Sign up</Text>
+                            </Text>
+
                         </TouchableOpacity>
 
                     </View>
